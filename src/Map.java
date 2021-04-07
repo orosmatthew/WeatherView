@@ -7,17 +7,21 @@ public class Map extends CanvasObject {
 
     BufferedImage image;
     TileServer tileServer;
+    String MapboxAccessToken = "pk.eyJ1Ijoib3Jvc21hdHRoZXciLCJhIjoiY2ttczM4MGxxMGR0YjJ2bnhqa2ZpcnF3diJ9.WBoUUsXLofAZC9xM52N-oQ";
 
     @Override
     public void init() {
 
-        tileServer = new MapboxTileServer("pk.eyJ1Ijoib3Jvc21hdHRoZXciLCJhIjoiY2ttczM4MGxxMGR0YjJ2bnhqa2ZpcnF3diJ9.WBoUUsXLofAZC9xM52N-oQ", true);
+        tileServer = new TileServer();
 
         int zoom = 10;
         double lat = 41.373034d;
         double lon = -81.847799d;
 
-        image = tileServer.getTile(tileServer.getURL(lat, lon, zoom));
+        TileServerRequest request = new MapboxRequest(lat, lon, zoom, MapboxAccessToken, true);
+
+
+        image = tileServer.getTile(request);
 
     }
 
