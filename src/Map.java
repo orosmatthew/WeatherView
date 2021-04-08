@@ -12,7 +12,7 @@ public class Map extends CanvasObject {
     @Override
     public void init() {
 
-        tileServer = new TileServer();
+        tileServer = new CachedTileServer();
 
         int zoom = 10;
         double lat = 41.373034d;

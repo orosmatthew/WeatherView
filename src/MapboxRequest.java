@@ -35,6 +35,21 @@ public class MapboxRequest implements TileServerRequest {
                 + accessToken);
     }
 
+    @Override
+    public double getLatitude() {
+        return latitude;
+    }
+
+    @Override
+    public double getLongitude() {
+        return longitude;
+    }
+
+    @Override
+    public int getZoom() {
+        return zoom;
+    }
+
     public static String getTileNumber(final double lat, final double lon, final int zoom) {
         int xtile = (int) Math.floor((lon + 180) / 360 * (1 << zoom));
         int ytile = (int) Math.floor((1 - Math.log(Math.tan(Math.toRadians(lat)) + 1 / Math.cos(Math.toRadians(lat))) / Math.PI) / 2 * (1 << zoom));
