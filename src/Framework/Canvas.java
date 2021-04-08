@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Canvas extends JComponent {
 
-    private ArrayList<CanvasObject> canvasObjects = new ArrayList<>();
+    private final ArrayList<CanvasObject> canvasObjects = new ArrayList<>();
 
     public void addCanvasObject(CanvasObject canvasObject) {
         if (!canvasObjects.contains(canvasObject)) {

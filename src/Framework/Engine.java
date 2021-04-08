@@ -5,22 +5,34 @@ import Framework.Object.EngineObject;
 
 import java.util.ArrayList;
 
-public class Engine {
-
-    private ArrayList<EngineObject> engineObjects;
-    private boolean isRunning;
-    private final int FPS = 144;
-    private final int UPS = 60;
-    private boolean isPrintingTimings;
+public class Engine extends Thread {
 
     private static Window window;
     private static Canvas canvas;
     private static Engine instance;
+    private final int FPS = 144;
+    private final int UPS = 60;
+    private final ArrayList<EngineObject> engineObjects;
+    private boolean isRunning;
+    private boolean isPrintingTimings;
 
     public Engine(Window window, Canvas canvas) {
-        this.window = window;
-        this.canvas = canvas;
+        Engine.window = window;
+        Engine.canvas = canvas;
         this.engineObjects = new ArrayList<>();
+    }
+
+    public static void setWindow(Window win) {
+        window = win;
+    }
+
+    public static Engine getInstance() {
+        if (instance == null) {
+            canvas = window.getCanvas();
+            window.createWindow();
+            instance = new Engine(window, canvas);
+        }
+        return instance;
     }
 
     public final void addEngineObject(EngineObject engineObject) {
@@ -39,7 +51,7 @@ public class Engine {
         isRunning = false;
     }
 
-    public final void startLoop() {
+    private final void startLoop() {
 
         isRunning = true;
 
@@ -92,17 +104,9 @@ public class Engine {
         canvas.paintImmediately(0, 0, (int) window.getWindowSize().x, (int) window.getWindowSize().y);
     }
 
-    public static void setWindow(Window win) {
-        window = win;
-    }
-
-    public static Engine getInstance() {
-        if (instance == null) {
-            canvas = window.getCanvas();
-            window.createWindow();
-            instance = new Engine(window, canvas);
-        }
-        return instance;
+    @Override
+    public void run() {
+        instance.startLoop();
     }
 
 }

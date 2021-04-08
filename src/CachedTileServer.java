@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class CachedTileServer extends TileServer {
 
-    private Path cachePath;
+    private final Path cachePath;
 
     public CachedTileServer() {
         this(".cache");
@@ -16,6 +16,10 @@ public class CachedTileServer extends TileServer {
 
     public CachedTileServer(String cachePath) {
         this.cachePath = Paths.get(cachePath);
+    }
+
+    private static String getCachedTileName(TileServerRequest request) {
+        return String.format("%f_%f_%d", request.getLatitude(), request.getLongitude(), request.getZoom());
     }
 
     @Override
@@ -50,9 +54,5 @@ public class CachedTileServer extends TileServer {
             return image;
         }
 
-    }
-
-    private static String getCachedTileName(TileServerRequest request) {
-        return String.format("%f_%f_%d", request.getLatitude(), request.getLongitude(), request.getZoom());
     }
 }

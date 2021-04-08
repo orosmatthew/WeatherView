@@ -16,6 +16,6 @@ public class Main {
         CanvasObject map = new Map();
         Engine.getInstance().addCanvasObject(map);
 
-        Engine.getInstance().startLoop();
+        Engine.getInstance().start();
     }
 }

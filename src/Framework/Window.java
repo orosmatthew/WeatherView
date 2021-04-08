@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class Window {
 
-    private JFrame window = new JFrame("");
+    private final JFrame window = new JFrame("");
 
-    private Vector2 windowSize;
-    private boolean isResizable;
-    private Color backgroundColor;
-    private Canvas canvas;
+    private final Vector2 windowSize;
+    private final boolean isResizable;
+    private final Color backgroundColor;
+    private final Canvas canvas;
 
     public Window(Canvas canvas, Vector2 windowSize, boolean isResizable, Color backgroundColor) {
         this.windowSize = windowSize;

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Transform2D {
 
-    private float[][] matrix = new float[2][3];
+    private final float[][] matrix = new float[2][3];
 
     public Transform2D() {
         this(new Vector2(1, 0), new Vector2(0, 1), new Vector2(0, 0));
