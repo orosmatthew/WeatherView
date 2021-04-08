@@ -15,10 +15,12 @@ public class Map extends CanvasObject {
         tileServer = new CachedTileServer();
 
         int zoom = 10;
-        double lat = 41.373034d;
-        double lon = -81.847799d;
+        double lat = 41.347881d;
+        double lon = -81.808503d;
 
-        TileServerRequest request = new MapboxRequest(lat, lon, zoom, MapboxAccessToken, true);
+        int[] tiles = SlippyMapHelper.getTileNumbers(lat, lon, zoom);
+
+        TileServerRequest request = new MapboxRequest(tiles[0], tiles[1], tiles[2], MapboxAccessToken, true);
 
 
         image = tileServer.getTile(request);

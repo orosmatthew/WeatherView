@@ -19,7 +19,7 @@ public class CachedTileServer extends TileServer {
     }
 
     private static String getCachedTileName(TileServerRequest request) {
-        return String.format("%f_%f_%d", request.getLatitude(), request.getLongitude(), request.getZoom());
+        return String.format("%d_%d_%d", request.getTileX(), request.getTileY(), request.getZoom());
     }
 
     @Override

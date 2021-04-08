@@ -2,9 +2,9 @@ public interface TileServerRequest {
 
     String getURL();
 
-    double getLatitude();
+    int getTileX();
 
-    double getLongitude();
+    int getTileY();
 
     int getZoom();
 
