@@ -3,8 +3,8 @@ public class MapboxRequest implements TileServerRequest {
     private final String accessToken;
     private final boolean isDoubleResolution;
     private final int zoom;
-    private int tileX;
-    private int tileY;
+    private final int tileX;
+    private final int tileY;
 
     public MapboxRequest(int tileX, int tileY, int zoom, String accessToken, boolean isDoubleResolution) {
         this.tileX = tileX;

@@ -1,6 +1,7 @@
 public class SlippyMapHelper {
 
-    private SlippyMapHelper() {}
+    private SlippyMapHelper() {
+    }
 
     public static int[] getTileNumbers(final double lat, final double lon, final int zoom) {
         int xtile = (int) Math.floor((lon + 180) / 360 * (1 << zoom));

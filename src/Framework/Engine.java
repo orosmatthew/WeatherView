@@ -3,7 +3,6 @@ package Framework;
 import Framework.Object.CanvasObject;
 import Framework.Object.EngineObject;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Engine extends Thread {
@@ -15,26 +14,20 @@ public class Engine extends Thread {
     private final int FPS = 144;
     private final int UPS = 60;
     private final ArrayList<EngineObject> engineObjects;
-
-    public ArrayList<EngineObject> getEngineObjects() {
-        return engineObjects;
-    }
-
     private boolean isRunning;
     private boolean isPrintingTimings;
-
     public Engine(Window window, Canvas canvas) {
         Engine.window = window;
         Engine.canvas = canvas;
         this.engineObjects = new ArrayList<>();
     }
 
-    public static void setWindow(Window win) {
-        window = win;
-    }
-
     public static Window getWindow() {
         return window;
+    }
+
+    public static void setWindow(Window win) {
+        window = win;
     }
 
     public static Canvas getCanvas() {
@@ -55,6 +48,10 @@ public class Engine extends Thread {
             instance = new Engine(window, canvas);
         }
         return instance;
+    }
+
+    public ArrayList<EngineObject> getEngineObjects() {
+        return engineObjects;
     }
 
     public final void addEngineObject(EngineObject engineObject) {

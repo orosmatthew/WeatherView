@@ -4,8 +4,6 @@ import Framework.Object.CanvasObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
-import java.security.Key;
 import java.util.ArrayList;
 
 public class Canvas extends JComponent {

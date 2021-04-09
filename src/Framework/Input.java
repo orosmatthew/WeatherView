@@ -1,15 +1,13 @@
 package Framework;
 
-import Framework.Object.EngineObject;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Input implements KeyListener {
 
-    private ArrayList<Integer> keysPressed = new ArrayList<>();
-    private ArrayList<Integer> keysJustPressed = new ArrayList<>();
+    private final ArrayList<Integer> keysPressed = new ArrayList<>();
+    private final ArrayList<Integer> keysJustPressed = new ArrayList<>();
 
     @Override
     public void keyTyped(KeyEvent e) {
