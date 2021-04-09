@@ -1,6 +1,8 @@
+import Framework.Engine;
 import Framework.Object.CanvasObject;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 public class Map extends CanvasObject {
@@ -8,23 +10,50 @@ public class Map extends CanvasObject {
     BufferedImage image;
     TileServer tileServer;
     String MapboxAccessToken = "pk.eyJ1Ijoib3Jvc21hdHRoZXciLCJhIjoiY2ttczM4MGxxMGR0YjJ2bnhqa2ZpcnF3diJ9.WBoUUsXLofAZC9xM52N-oQ";
+    int tileX;
+    int tileY;
+    int zoom;
 
     @Override
     public void init() {
 
         tileServer = new CachedTileServer();
 
-        int zoom = 10;
+        zoom = 10;
         double lat = 41.347881d;
         double lon = -81.808503d;
 
         int[] tiles = SlippyMapHelper.getTileNumbers(lat, lon, zoom);
 
-        TileServerRequest request = new MapboxRequest(tiles[0], tiles[1], tiles[2], MapboxAccessToken, true);
+        tileX = tiles[0];
+        tileY = tiles[1];
 
+        displayTile();
+    }
 
+    private void displayTile() {
+        TileServerRequest request = new MapboxRequest(tileX, tileY, zoom, MapboxAccessToken, true);
         image = tileServer.getTile(request);
+    }
 
+    @Override
+    public void process(double delta) {
+        if (Engine.getInput().isKeyJustPressed(KeyEvent.VK_UP)) {
+            tileY--;
+            displayTile();
+        }
+        if (Engine.getInput().isKeyJustPressed(KeyEvent.VK_DOWN)) {
+            tileY++;
+            displayTile();
+        }
+        if (Engine.getInput().isKeyJustPressed(KeyEvent.VK_LEFT)) {
+            tileX--;
+            displayTile();
+        }
+        if (Engine.getInput().isKeyJustPressed(KeyEvent.VK_RIGHT)) {
+            tileX++;
+            displayTile();
+        }
     }
 
     @Override

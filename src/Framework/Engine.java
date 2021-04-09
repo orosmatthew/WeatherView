@@ -3,16 +3,23 @@ package Framework;
 import Framework.Object.CanvasObject;
 import Framework.Object.EngineObject;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Engine extends Thread {
 
     private static Window window;
     private static Canvas canvas;
+    private static Input input;
     private static Engine instance;
     private final int FPS = 144;
     private final int UPS = 60;
     private final ArrayList<EngineObject> engineObjects;
+
+    public ArrayList<EngineObject> getEngineObjects() {
+        return engineObjects;
+    }
+
     private boolean isRunning;
     private boolean isPrintingTimings;
 
@@ -26,10 +33,25 @@ public class Engine extends Thread {
         window = win;
     }
 
+    public static Window getWindow() {
+        return window;
+    }
+
+    public static Canvas getCanvas() {
+        return canvas;
+    }
+
+    public static Input getInput() {
+        return input;
+    }
+
     public static Engine getInstance() {
         if (instance == null) {
             canvas = window.getCanvas();
+            input = canvas.getInput();
             window.createWindow();
+            canvas.addKeyListener(window.getCanvas().getInput());
+            canvas.setFocusable(true);
             instance = new Engine(window, canvas);
         }
         return instance;
@@ -98,6 +120,7 @@ public class Engine extends Thread {
             o.process(delta);
         }
 
+        input.resetJustPressed();
     }
 
     private final void render(double delta) {

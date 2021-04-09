@@ -4,11 +4,22 @@ import Framework.Object.CanvasObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.security.Key;
 import java.util.ArrayList;
 
 public class Canvas extends JComponent {
 
     private final ArrayList<CanvasObject> canvasObjects = new ArrayList<>();
+    private Input input;
+
+    public Canvas() {
+
+    }
+
+    public Canvas(Input input) {
+        this.input = input;
+    }
 
     public void addCanvasObject(CanvasObject canvasObject) {
         if (!canvasObjects.contains(canvasObject)) {
@@ -21,5 +32,9 @@ public class Canvas extends JComponent {
         for (CanvasObject o : canvasObjects) {
             o.drawObject(g);
         }
+    }
+
+    public Input getInput() {
+        return input;
     }
 }
