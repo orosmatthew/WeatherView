@@ -16,7 +16,8 @@ public class Engine extends Thread {
     private final ArrayList<EngineObject> engineObjects;
     private boolean isRunning;
     private boolean isPrintingTimings;
-    public Engine(Window window, Canvas canvas) {
+
+    private Engine(Window window, Canvas canvas) {
         Engine.window = window;
         Engine.canvas = canvas;
         this.engineObjects = new ArrayList<>();
