@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class TileServer {
 
-    public BufferedImage getTile(TileServerRequest request) {
+    public BufferedImage getTile(MapTile request) {
         URL url = null;
         BufferedImage image = null;
 

@@ -1,4 +1,4 @@
-public interface TileServerRequest {
+public interface MapTile {
 
     String getURL();
 

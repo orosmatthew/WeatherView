@@ -1,4 +1,4 @@
-public class MapboxRequest implements TileServerRequest {
+public class MapboxTile implements MapTile {
 
     private final String accessToken;
     private final boolean isDoubleResolution;
@@ -6,7 +6,7 @@ public class MapboxRequest implements TileServerRequest {
     private final int tileX;
     private final int tileY;
 
-    public MapboxRequest(int tileX, int tileY, int zoom, String accessToken, boolean isDoubleResolution) {
+    public MapboxTile(int tileX, int tileY, int zoom, String accessToken, boolean isDoubleResolution) {
         this.tileX = tileX;
         this.tileY = tileY;
         this.zoom = zoom;
@@ -14,7 +14,7 @@ public class MapboxRequest implements TileServerRequest {
         this.isDoubleResolution = isDoubleResolution;
     }
 
-    public MapboxRequest(int tileX, int tileY, int zoom, String accessToken) {
+    public MapboxTile(int tileX, int tileY, int zoom, String accessToken) {
         this(tileX, tileY, zoom, accessToken, false);
     }
 

@@ -18,12 +18,12 @@ public class CachedTileServer extends TileServer {
         this.cachePath = Paths.get(cachePath);
     }
 
-    private static String getCachedTileName(TileServerRequest request) {
+    private static String getCachedTileName(MapTile request) {
         return String.format("%d_%d_%d", request.getTileX(), request.getTileY(), request.getZoom());
     }
 
     @Override
-    public BufferedImage getTile(TileServerRequest request) {
+    public BufferedImage getTile(MapTile request) {
 
         if (!Files.exists(cachePath)) {
             try {

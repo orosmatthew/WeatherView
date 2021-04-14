@@ -2,7 +2,6 @@ import Framework.Engine;
 import Framework.Object.CanvasObject;
 import Framework.Type.Vector2;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -43,8 +42,8 @@ public class Map extends CanvasObject {
 
     private void displayTile() {
         for (int i = 0; i < 9; i++) {
-            TileServerRequest request = new MapboxRequest(tileX + (int)imagePositions[i].x, tileY + (int)imagePositions[i].y, zoom, MapboxAccessToken, true);
-            images[i] = tileServer.getTile(request);
+            MapTile tile = new MapboxTile(tileX + (int)imagePositions[i].x, tileY + (int)imagePositions[i].y, zoom, MapboxAccessToken, true);
+            images[i] = tileServer.getTile(tile);
         }
     }
 
